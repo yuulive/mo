@@ -39,9 +39,9 @@ macro_rules! boilerplate_test_grammar {
 mod test {
 
     // use crate::compile_grammar;
-    use bulk_examples_generator::config::*;
-    use bulk_examples_generator::parse_input;
-    use bulk_examples_generator::*;
+    use mo::config::*;
+    use mo::parse_input;
+    use mo::*;
 
     /// La mecánica de los tests es la siguiente
     /// Si genero n elementos a partir de una misma gramatica
@@ -76,9 +76,9 @@ mod test {
 
 #[cfg(test)]
 mod pest_rules {
-    use bulk_examples_generator::config::*;
-    use bulk_examples_generator::parse_input;
-    use bulk_examples_generator::{compile_grammar, parallel_generate_examples};
+    use mo::config::*;
+    use mo::parse_input;
+    use mo::{compile_grammar, parallel_generate_examples};
 
     /// expr{n} exactly n repetitions
     #[test]
@@ -243,9 +243,9 @@ mod pest_rules {
 
 // #[cfg(test)]
 // mod tricky_tests {
-//     use bulk_examples_generator::config::*;
-//     use bulk_examples_generator::parse_input;
-//     use bulk_examples_generator::{compile_grammar, parallel_generate_examples};
+//     use mo::config::*;
+//     use mo::parse_input;
+//     use mo::{compile_grammar, parallel_generate_examples};
 
 //     #[test]
 //     fn ordered_choice() {

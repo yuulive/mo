@@ -1,5 +1,5 @@
-use bulk_examples_generator::config::GeneratorConfig;
-use bulk_examples_generator::parallel_generate_examples;
+use mo::config::GeneratorConfig;
+use mo::parallel_generate_examples;
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
 fn basic_benchmark(c: &mut Criterion) {

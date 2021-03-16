@@ -1,13 +1,13 @@
-#![doc(html_root_url = "https://docs.rs/bulk_examples_generator/0.1.0")]
+#![doc(html_root_url = "https://docs.rs/mo/0.1.0")]
 //! # Usage
 //!
-//! bulk_examples_generator come in two flavors: binary or crate (library)
+//! mo come in two flavors: binary or crate (library)
 //!
-//! For a basic/medium/advanced usage of the binary/library, please see the [Readme](https://github.com/siberianbluerobin/bulk-examples-generator).
+//! For a basic/medium/advanced usage of the binary/library, please see the [Readme](https://github.com/yuulive/mo).
 //!
 //! ## Frequently Asked Questions? (FAQ)
 //!
-//! See the [Readme](https://github.com/siberianbluerobin/bulk-examples-generator).
+//! See the [Readme](https://github.com/yuulive/mo).
 //!
 //! ## I just want to see how this code works
 //!
@@ -41,7 +41,7 @@ use crate::generator::*;
 /// In this step, the grammar is validated with the pest reference grammar, and the built-in rules are replaced for
 /// their equivalents
 /// ```
-/// use bulk_examples_generator::compile_grammar;
+/// use mo::compile_grammar;
 ///
 /// // Grammar string
 /// let mut grammar = r#"
@@ -132,8 +132,8 @@ pub fn compile_grammar(grammar: String) -> Result<Grammar, Vec<HashMap<String, S
 /// Generate a number of examples with the grammar,start rule and config provided
 ///
 /// ```
-/// use bulk_examples_generator::config::GeneratorConfig;
-/// use bulk_examples_generator::parallel_generate_examples;
+/// use mo::config::GeneratorConfig;
+/// use mo::parallel_generate_examples;
 ///
 /// // Default configuration for the generator
 /// let mut config: GeneratorConfig = Default::default();
@@ -211,8 +211,8 @@ pub fn parallel_generate_examples(
 /// ```ignore
 /// # // This doc_test is ignored because have side effects (the files)
 /// use std::path::Path;
-/// use bulk_examples_generator::config::GeneratorConfig;
-/// use bulk_examples_generator::parallel_generate_save_examples;
+/// use mo::config::GeneratorConfig;
+/// use mo::parallel_generate_save_examples;
 ///
 /// // Default configuration for the generator
 /// let mut config: GeneratorConfig = Default::default();
@@ -310,8 +310,8 @@ pub fn parallel_generate_save_examples<S>(
 /// It's used for validate the examples generated with the original grammar
 ///
 /// ```
-/// use bulk_examples_generator::config::GeneratorConfig;
-/// use bulk_examples_generator::{compile_grammar, parse_input, parallel_generate_examples};
+/// use mo::config::GeneratorConfig;
+/// use mo::{compile_grammar, parse_input, parallel_generate_examples};
 ///
 /// // Default configuration for the generator
 /// let mut config: GeneratorConfig = Default::default();

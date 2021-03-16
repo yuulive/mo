@@ -1,11 +1,11 @@
 [package]
-name = "bulk_examples_generator"
+name = "mo"
 version = "0.1.0"
 authors = ["siberianbluerobin <n1xef5em4bp4@opayq.com>"]
 edition = "2018"
 description = "Create dozens/hundreds/thousands/millions of random examples based on a pest grammar (PEG). It can be used for generate string/structured data for training models in AI, or like a grammar fuzzer for find bugs."
 readme = "README.md"
-repository = "https://github.com/siberianbluerobin/bulk-examples-generator"
+repository = "https://github.com/yuulive/mo"
 license = "MIT"
 keywords = ["generator", "grammar", "random", "data"]
 categories = ["command-line-utilities", "parsing", "parser-implementations", "template-engine"]
@@ -14,7 +14,7 @@ categories = ["command-line-utilities", "parsing", "parser-implementations", "te
 bench = false
 
 [[bin]]
-name = "bulk_examples_generator"
+name = "mo"
 path = "src/main.rs"
 bench = false
 

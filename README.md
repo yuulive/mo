@@ -1,6 +1,6 @@
-# Bulk Examples Generator
+# Mo
 
-Bulk Examples Generator is a tool created in Rust for create dozens/hundreds/thousands/millions of random examples based on a pest grammar (PEG). It can be used for generate string/structured data for training models in AI, or like a grammar fuzzer for find bugs.
+Mo is a tool created in Rust for create dozens/hundreds/thousands/millions of random examples based on a pest grammar (PEG). It can be used for generate string/structured data for training models in AI, or like a grammar fuzzer for find bugs.
 
 # Table of Contents
 
@@ -24,7 +24,7 @@ Bulk Examples Generator is a tool created in Rust for create dozens/hundreds/tho
 
 # Summary
 
-bulk_examples_generator come in two flavors: binary or crate (library).
+mo come in two flavors: binary or crate (library).
 
 If you only want to generate examples see [Binary use](#binary-use)
 
@@ -51,10 +51,10 @@ As soon as this library becomes stable, I will create executables for Windows an
 1. Install the application or clone the repository
 
 ```bash
-cargo install bulk_examples_generator
+cargo install mo
 ```
 
-If you clone the repository instead of using `bulk-examples-generator` you have to use `cargo run -- <comands>`
+If you clone the repository instead of using `mo` you have to use `cargo run -- <comands>`
 
 2. Create a PEST grammar and put on a file e.g. `mytest.pest`
 
@@ -69,13 +69,13 @@ sentence = {"I have been programming in " ~ language ~ " for " ~ daysNumber ~ ".
 3. Execute the following command:
 
 ```bash
-bulk_examples_generator --grammar mytest.pest --quantity 3 --start-rule sentence --out-type stdout
+mo --grammar mytest.pest --quantity 3 --start-rule sentence --out-type stdout
 ```
 
 or shorter
 
 ```bash
-bulk_examples_generator -g mytest.pest -q 3 -s sentence -o stdout
+mo -g mytest.pest -q 3 -s sentence -o stdout
 ```
 
 You will have to see something like:
@@ -96,12 +96,12 @@ You need 4 parameters for use this application
 1. A output type (where save or print the examples)
 
 ```bash
-bulk_examples_generator -g life.pest -q 3000 -s love -o stdout
+mo -g life.pest -q 3000 -s love -o stdout
 ```
 
 ### Grammars
 
-To use Bulk examples generator you need to know how write grammars in PEST notation.
+To use Mo you need to know how write grammars in PEST notation.
 
 Take a look to [Quick guide for write grammars](WritingGrammars.md) or check the [pest reference](https://pest.rs/book/grammars/syntax.html)
 
@@ -227,7 +227,7 @@ You can remove a rule like this `"|BLACKLIST|R|MyRule|"` or multiples rules at t
 A start rule is required to begin the generation, if the start rule doesn't exist on the grammar, the examples will print the name of the rule
 
 ```
-bulk_examples_generator -g mytest.pest -q 3 -s cookies -o stdout
+mo -g mytest.pest -q 3 -s cookies -o stdout
 ```
 
 ```
@@ -243,7 +243,7 @@ cookies
 You can print the examples in stdout with the parameter `--out-type stdout` or `-o stdout`
 
 ```bash
-bulk_examples_generator -g mytest.pest -q 3 -s sentence -o stdout
+mo -g mytest.pest -q 3 -s sentence -o stdout
 ```
 
 You will have to see something like:
@@ -257,7 +257,7 @@ I have been programming in Haskell for 1 day.
 You can print the number of the example generated with `--print-progress` flag, the enumeration is not sequential because the generation is parallel
 
 ```bash
-bulk_examples_generator -g mytest.pest -q 3 -s sentence -o stdout
+mo -g mytest.pest -q 3 -s sentence -o stdout
 ```
 
 You will have to see something like:
@@ -276,7 +276,7 @@ I have been programming in Haskell for 1 day.
 You can use ">" for save all examples in a file.
 
 ```bash
-bulk_examples_generator -g mytest.pest -q 3 -s sentence -o stdout > "big-file.txt"
+mo -g mytest.pest -q 3 -s sentence -o stdout > "big-file.txt"
 ```
 
 #### Folder
@@ -284,13 +284,13 @@ bulk_examples_generator -g mytest.pest -q 3 -s sentence -o stdout > "big-file.tx
 You can use `--out-type folder` or `-o folder` along with `--output-folder` to choose the folder and save the examples there (one file for each example).
 
 ```bash
-bulk_examples_generator -g mytest.pest -q 3 -s sentence -o folder --output-folder examples
+mo -g mytest.pest -q 3 -s sentence -o folder --output-folder examples
 ```
 
 By default all files will have the name "example-{}.txt" where {} is the number of the example, you can change this with `--template-name` option
 
 ```bash
-bulk_examples_generator -g mytest.pest -q 3 -s sentence -o folder --output-folder examples --template-name "book-number-{}.txt"
+mo -g mytest.pest -q 3 -s sentence -o folder --output-folder examples --template-name "book-number-{}.txt"
 ```
 
 In this mode you will see a progress bar with the elapsed time and estimated remaining time.
@@ -300,7 +300,7 @@ In this mode you will see a progress bar with the elapsed time and estimated rem
 Currently you can use `--out-type debug` or `-o debug` for print the options loaded, the grammar AST, the progress in the generation and finally print the generated examples in a vector.
 
 ```bash
-bulk_examples_generator -g mytest.pest -q 3 -s sentence -o debug
+mo -g mytest.pest -q 3 -s sentence -o debug
 ```
 
 Soon I expect to improve the debug mode with more information.
@@ -320,13 +320,13 @@ Text = {ASCII_ALPHA{1,5}}
 
 Running a couple of times with
 
-`bulk_examples_generator -g configGramar.pest -q 1 -o stdout -s Body`
+`mo -g configGramar.pest -q 1 -o stdout -s Body`
 
 You can see that the generation sometimes is very long, this is technically correct because the modifiers "\*" and "+" means zero or more and one or more, more means infinity but we do not have infinite time, so this is why there are upper limits.
 
 To use the configuration just create a TOML file with the parameters and use the `--config-file` or `c` for load the file in the generation.
 
-`bulk_examples_generator -g configGramar.pest -q 1 -o stdout -s Body -c config.toml`
+`mo -g configGramar.pest -q 1 -o stdout -s Body -c config.toml`
 
 There are 8 parameters that you can use in a config file
 
@@ -370,7 +370,7 @@ _default value:_ 200
 
 ## Command line options
 
-`bulk_examples_generator --help`
+`mo --help`
 
 <details>
 <summary>
@@ -379,7 +379,7 @@ Click to see the options
 
 ```
 USAGE:
-    bulk-examples-generator.exe [FLAGS] [OPTIONS] --grammar <grammar> --out-type <out-type> --quantity <quantity> --start-rule <start-rule>
+    mo.exe [FLAGS] [OPTIONS] --grammar <grammar> --out-type <out-type> --quantity <quantity> --start-rule <start-rule>
 
 FLAGS:
     -h, --help
@@ -427,7 +427,7 @@ OPTIONS:
 
 ## Benchmarks
 
-**How fast is bulk examples generator?**
+**How fast is mo?**
 
 Currently the application generates examples using parallelism at example level, It means that if you have four logical cores, probably your pc can generate 4 examples at the same time giving a speed boost in the generation.
 
@@ -480,7 +480,7 @@ Yes, currently the parallelism is at example level, but there are rules that cou
 It's just add in Cargo.toml
 
 ```TOML
-bulk_examples_generator = "^0.1"
+mo = "^0.1"
 ```
 
 ### Example
@@ -531,19 +531,19 @@ Currently there are 4 functions available
 
 `parallel_generate_examples`
 
-The function used for generate examples. [docs](https://docs.rs/bulk-examples-generator/0.1.0/serde/fn.parallel_generate_examples.html)
+The function used for generate examples. [docs](https://docs.rs/mo/0.1.0/serde/fn.parallel_generate_examples.html)
 
 `parallel_generate_save_examples`
 
-The function used for generate and save the examples. [docs](https://docs.rs/bulk-examples-generator/0.1.0/fn.parallel_generate_save_examples.html)
+The function used for generate and save the examples. [docs](https://docs.rs/mo/0.1.0/fn.parallel_generate_save_examples.html)
 
 `compile_grammar`
 
-Compile a grammar string and creates a HashMap with rules founds as keys and their components as entries. It can be useful for see the AST or check the validity of the example generated [docs](https://docs.rs/bulk-examples-generator/0.1.0/fn.compile_grammar.html)
+Compile a grammar string and creates a HashMap with rules founds as keys and their components as entries. It can be useful for see the AST or check the validity of the example generated [docs](https://docs.rs/mo/0.1.0/fn.compile_grammar.html)
 
 `parse_input`
 
-Parse an example generated with the grammar provided, is a symlink to parse function of pest. Useful for check the validity of an example [docs](https://docs.rs/bulk-examples-generator/0.1.0/fn.parse_input.html)
+Parse an example generated with the grammar provided, is a symlink to parse function of pest. Useful for check the validity of an example [docs](https://docs.rs/mo/0.1.0/fn.parse_input.html)
 
 ## Syntax supported
 
@@ -589,7 +589,7 @@ The ❌ mark means that at the moment isn't supported. I know that I didn't code
 
 As soon as this library becomes stable, I will create executables for Windows and Linux.
 
-**How fast is bulk examples generator?**
+**How fast is mo?**
 
 Check the basic benchmark [here](#benchmarks)
 

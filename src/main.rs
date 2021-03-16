@@ -1,7 +1,7 @@
-use bulk_examples_generator::compile_grammar;
-use bulk_examples_generator::config::GeneratorConfig;
-use bulk_examples_generator::parallel_generate_examples;
-use bulk_examples_generator::parallel_generate_save_examples;
+use mo::compile_grammar;
+use mo::config::GeneratorConfig;
+use mo::parallel_generate_examples;
+use mo::parallel_generate_save_examples;
 
 use std::fs::File;
 use std::io::prelude::*;
@@ -14,12 +14,12 @@ use structopt::StructOpt;
 ///
 /// Examples of use:
 ///
-/// bulk-examples-generator --grammar my-grammar.pest --quantity 5 --start-rule myrule --out-type stdout
+/// mo --grammar my-grammar.pest --quantity 5 --start-rule myrule --out-type stdout
 ///
 /// Shortened
 ///
-/// bulk-examples-generator -g my-grammar.pest -q 5 -s myrule -o stdout
-#[structopt(name = "bulk-examples-generator")]
+/// mo -g my-grammar.pest -q 5 -s myrule -o stdout
+#[structopt(name = "mo")]
 pub struct Opt {
     /// Path of grammar for generate examples
     #[structopt(short, long, parse(from_os_str))]
