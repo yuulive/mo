@@ -26,9 +26,9 @@ Mo is a tool created in Rust for create dozens/hundreds/thousands/millions of ra
 
 mo come in two flavors: binary or crate (library).
 
-If you only want to generate examples see [Binary use](#binary-use)
+If you only want to generate examples see [Binary use](#binary-usage)
 
-If you want to use the crate for your own needs see [Crate use](#crate-use)
+If you want to use the crate for your own needs see [Crate use](#crate-usage)
 
 # Binary usage
 
